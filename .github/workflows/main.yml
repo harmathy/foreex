@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      CMAKE_C_COMPILER: gcc
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies
+        run: sudo apt-get install -y libharfbuzz-dev
+      - name: build
+        run: |
+          mkdir -p build
+          cmake -B build
+          cmake --build build
+      - name: run
+        run: ./build/foreex
