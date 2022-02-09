@@ -1,4 +1,4 @@
-/* main.c
+/* renderer.h
  *
  * Copyright 2022 Max Harmathy <harmathy@mailbox.org>
  *
@@ -16,19 +16,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "renderer.h"
-#include <stdio.h>
+#ifndef FOREEX_RENDERER_H
+#define FOREEX_RENDERER_H
 
-int main(int argc, char* argv[]) {
-    FcBool fontconfigInit = FcInit();
-    if (fontconfigInit == FcFalse) {
-        fprintf(stderr, "Fontconfig initialization failed");
-        return EXIT_FAILURE;
-    }
-    FcConfig* fontConfig = FcInitLoadConfigAndFonts();
-    char* font = "Helvetica";
-    const char* path = foreex_retrieve_path(fontConfig, font);
-    printf("Would load file \"%s\" for font \"%s\"\n", path, font);
-    free(fontConfig);
-    return EXIT_SUCCESS;
-}
+#include <ft2build.h>
+#include FT_FREETYPE_H
+#include <fontconfig/fontconfig.h>
+#include <hb.h>
+
+/**
+ * @brief frx_retrieve_path fetches the path of a specified font.
+ *
+ * Here the Fontconfig library is used to substitute the font according to the
+ * system settings and to locate the font file. The font file path can be used
+ * to load the font in FreeType. The path is copied from the Fontconfig data
+ * structures which are destroyed after this method call.
+ *
+ * @param font name to specify the font
+ * @return path to the font file
+ */
+const char* foreex_retrieve_path(FcConfig* fontConfig, const char* font);
+
+
+#endif // FOREEX_RENDERER_H

@@ -29,21 +29,23 @@ pkg_check_modules(FONTCONFIG REQUIRED fontconfig)
 pkg_check_modules(HARFBUZZ REQUIRED harfbuzz)
 
 set(foreex_SRCS
-  src/main.c
-)
+        src/main.c
+        src/renderer.h
+        src/renderer.c
+        )
 
 add_executable(${PROJECT_NAME} ${foreex_SRCS})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-  "${FREETYPE_INCLUDE_DIRS}"
-  "${FONTCONFIG_INCLUDE_DIRS}"
-  "${HARFBUZZ_INCLUDE_DIRS}"
-)
+        "${FREETYPE_INCLUDE_DIRS}"
+        "${FONTCONFIG_INCLUDE_DIRS}"
+        "${HARFBUZZ_INCLUDE_DIRS}"
+        )
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE )
+target_compile_definitions(${PROJECT_NAME} PRIVATE)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-  "${FREETYPE_LIBRARIES}"
-  "${FONTCONFIG_LIBRARIES}"
-  "${HARFBUZZ_LIBRARIES}"
-)
+        "${FREETYPE_LIBRARIES}"
+        "${FONTCONFIG_LIBRARIES}"
+        "${HARFBUZZ_LIBRARIES}"
+        )
