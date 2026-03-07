@@ -1,0 +1,24 @@
+version = 1
+SPDX-PackageName = "foreex"
+SPDX-PackageSupplier = "Max Harmathy <harmathy@alumni.tum.de>"
+SPDX-PackageDownloadLocation = "https://codeberg.org/harmathy/foreex"
+
+[[annotations]]
+path = [
+    ".clang-format",
+    ".editorconfig",
+    ".github/workflows/main.yml",
+    ".gitignore",
+    "REUSE.toml",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Copyright (C) 2022 Max Harmathy <harmathy@alumni.tum.de>"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+
+[[annotations]]
+path = ["README.md", "data/foreex.png"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Copyright (C) 2022 Max Harmathy <harmathy@alumni.tum.de>"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+SPDX-FileComment = "documentation"
