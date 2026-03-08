@@ -1,0 +1,7 @@
+FROM ubuntu:26.04
+
+COPY install-ubuntu-build-deps.sh /usr/local/bin
+
+RUN install-ubuntu-build-deps.sh
+
+
